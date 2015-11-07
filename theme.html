@@ -1,0 +1,889 @@
+<html>
+    <head>
+        <title>{Title}</title>
+        <link rel="shortcut icon" href="{Favicon}">
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        
+        
+        
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,500,700' rel='stylesheet' type='text/css'>
+        
+                
+        <meta name="color:Header" content="#ffa200" />
+        <meta name="color:HeaderShadow" content="#ff3600" />
+        
+        
+        
+        <style>
+            
+            body {
+                font-family: 'Open Sans', sans-serif;
+                background-color: #e1e1e1;
+                margin: 0;
+                min-width: 650px;
+                box-shadow: inset 0px 110px 0px 0px {color:HeaderShadow};
+                box-shadow: inset 0px 100px 0px 0px {color:Header}; 
+                padding-top: 40px;
+            }
+            
+            
+            ::-moz-selection {
+                color: #ffffff;
+                background-color: {color:Header};
+            }
+            ::selection {
+                color: #ffffff; 
+                background-color: {color:Header};
+            }
+
+            
+            #disclaimer {
+                background-color: black;
+                height: 20px;
+                font-size: 13px;
+                color: white;
+                text-align: center;
+                position: fixed;
+                top: 0px;
+                width: 100%;
+                display: none;
+            }
+            #colorbar {
+                background-color: {color:Header};
+                display: block;
+                height: 120px;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+                box-shadow: 0 5px 0px 0 {color:HeaderShadow};
+            }
+            
+            
+            #center {
+                margin: 0 auto;
+            }
+            
+            
+            #logolinks {
+                background-color: #ffffff;
+                padding: 9px;
+                border: 1px solid #dddddd;
+                box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+                z-index: 10;
+                position: relative;
+                margin: 0 15px 10px 15px;
+                
+            }
+            #logolinks:after {
+              content:"";
+              display:table;
+              clear:both;
+            }
+            
+            
+            
+            #logo {
+                margin: 0 auto;            
+                width: 400px;
+            }
+            #logo:hover{
+                opacity: 0.85;
+            }
+            #logo img {
+                height: 80px;
+                width: auto;
+                margin: 10px 30px 15px 30px;
+            }
+            #logo a {
+                line-height: 0;
+            }
+            
+            hr {
+                width: 90%;
+                height: 1px;
+                background-color: rgba(0,0,0,0.2);
+                border-style: none;
+            }
+    
+            #nav {
+                text-align: center;
+            }
+            #nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 0 auto;
+            }
+            #nav ul li {
+                display: inline;
+                padding: 0px 10px ;
+                margin: 7px 0px;
+                border-left: solid 1px rgba(0,0,0,0.2);
+            }
+            #nav ul li:first-of-type{
+                border-left-style: none;
+            }
+            #nav ul li a {
+                text-decoration: none;
+                color: #464646;
+            }
+            #nav ul li a:hover {
+                opacity: 0.6;    
+            }
+            
+            #main {
+                margin: 0 auto;
+                padding: 0;
+            }
+            #posts {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+            
+            
+            .post {
+                width: 500px;
+                padding: 9px;
+                margin: 15px 15px 20px 15px;
+                float: left;
+                background-color: #ffffff;
+                border: 1px solid #dddddd;
+                box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+                color: #464646;
+                position: relative;
+                z-index: 1;
+            }
+            .post a {
+                color: #464646;
+                text-decoration: none;
+                font-weight: 700;
+            }
+            .caption blockquote {
+                border-left: 2px solid rgba(0,0,0,0.2);
+                padding-left: 10px;
+                margin-left: 5px !important;
+            }
+            .post blockquote {
+                margin-top: 3px;
+                margin-bottom: 13px;
+            }
+            .flickr-embed-frame {
+                max-width: 500px !important;
+            }
+            .photoset-photos:hover, .panorama-photo:hover {
+                opacity: 0.7;
+            }
+            
+            .caption {
+                padding: 0 15px 0 15px;
+            }
+            .caption p {
+                margin: 3px 0 3px 0;
+            }
+            
+        
+            .imglink {
+                line-height: 0;
+            }
+            
+            
+            .buttons {
+                position: absolute;
+                bottom: -20px;
+                right: 15px;
+                width: 150px;
+                display: inline;
+                list-style: none;
+            }
+            .fab {
+                display: inline;
+                width: 20px;
+                margin: 0;
+                padding: 0;
+                float: left;
+                margin: 15px;
+                height: 20px;
+                line-height: 0;
+            }
+            .reblogButton:before, .favButton:before, .permalinkButton:before {
+                content: '';
+                position:absolute;
+                z-index:-1;
+                border-radius:50%;
+                width:34px;
+                height:34px;
+                top: 5px;
+                background-color: {color:Header};
+                border: 3px solid {color:HeaderShadow};
+                box-shadow: 0 1px 4px 0 rgba(0,0,0,0.4); 
+            }
+            .reblogButton:before {
+                left: 55px;
+            }
+            .favButton:before {
+                left: 105px;
+            }
+            .permalinkButton:before {
+                left: 5px;
+            }
+            
+            .notes-time {
+                margin-left: 15px;
+            }
+            
+            
+            .notes li {
+                padding: 5px;
+            }
+            .notes .avatar {
+                padding: 0 8px 0 0;
+            }
+            
+            .post a:hover{
+                opacity: 0.7;
+            }
+            .post img:hover {
+                opacity: 0.7 !important;
+            }
+            .caption {
+                margin-top: 8px;
+            }
+            
+            #footer {
+                background-color: #363636;
+                border-top: 5px solid rgba(0,0,0,0.2);
+                color: #8e8e8e;
+                text-align: center;
+                padding: 10px 0 15px 0;
+                margin: 15px 0 0 0;
+            }   
+            #footer hr{
+                margin-bottom: 16px;
+                background-color: #8e8e8e;
+                opacity: 0.5;
+            }
+            #footer ul {
+                list-style: none;
+                padding: 0;
+                margin: 0 auto 13px auto;
+            }
+            #footer ul li {
+                padding: 10px 0;
+                display: inline-block;
+                margin: 0 7px 0 7px;
+            }
+            .footer-button{
+                background-color: {color:Header};
+                border: 3px solid {color:HeaderShadow};
+                padding: 3px 13px;
+                width: 170px;
+                height: 30px;
+                margin: auto;
+            }
+            .footer-button:hover {
+                background-color: white;
+            }
+            #footer ul a {
+                color: white;
+                text-decoration: none;
+                font-weight: 500;
+                line-height: 30px;
+            }
+            #footer ul a:hover {
+                color: {color:HeaderShadow};
+            }
+            
+            .current-page {
+                background-color: white;
+                color: {color:HeaderShadow};
+                font-weight: 500;                
+            }
+            
+            #descr {
+                margin: 0;
+            }
+            {block:PermalinkPage}
+                #footer ul {
+                    display: none;
+                }            
+            {/block:PermalinkPage}
+            
+            .quote {
+                font-style: italic;
+                font-size: 1.2em;
+            }
+            .quote .source {
+                font-style: normal;
+                font-size: 0.8em;
+                padding-left: 20px;
+            }
+            .text, .quote, .link {
+                padding:  9px 19px; 
+                width: 480px;
+            }
+            .actuallink {
+                font-weight: 700;
+                font-size: 1.2em;
+                text-decoration: none;
+            }
+            
+            
+            
+            @media only screen and (max-width: 1200px) {
+                #center {
+                    width: 550px;
+                }
+                #logo {
+                    width: 260px;
+                }
+                #logo img {
+                    height: 60px;
+                    margin: 5px;
+                }
+                #nav ul li {
+                    padding: 0 7px;
+                }
+                #nav ul li a{
+                    font-size: 12px;
+                }
+            }
+            @media only screen and (min-width: 1201px) and (max-width: 1799px) {
+                #center {
+                    width: 1100px;
+                }
+            }
+            @media only screen and (min-width: 1800px) and (max-width: 2349px){
+                #center {
+                    width: 1650px;
+                }
+            }
+            @media only screen and (min-width: 2350px) and (max-width: 2899px){
+                #center {
+                    width: 2200px;
+                }
+            @media only screen and (min-width: 2900px) and (max-width: 3449px){
+                #center {
+                    width: 2750px;
+                }
+            }
+            @media only screen and (min-width: 3450px) and (max-width: 3999px){
+                #center {
+                    width: 3300px;
+                }
+            }
+            @media only screen and (min-width: 4000px) and (max-width: 4549px){
+                #center {
+                    width: 3850px;
+                }
+            }
+            @media only screen and (min-width: 4550px){
+                #center {
+                    width: 4400px;
+                }
+            }
+            
+        </style>
+        
+        
+    </head>
+    
+    <body>
+        
+        <div id="colorbar"></div>
+        <div id="disclaimer">CURRENTLY REDESIGNING THEME</div>
+        
+        <div id="center">
+            
+            <header>
+                <div id="logolinks">
+
+                    <div id="logo">                     
+                        <a id="logo" href="/home"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/logo_transparent.png" alt="big &quot;artoms&quot; logo"></a>
+                    </div>
+
+                    <hr></hr>
+
+                    <div id="links"> 
+
+                        <nav id="nav">
+                            <ul>
+                                <li><a href="/home">Home</a></li>
+                                <li><a href="/art">My Art</a></li>
+                                <li><a href="/textures">Textures</a></li>
+                                <li><a href="/ama">AMA</a></li>
+                                <li><a href="/da">DeviantART</a></li>
+                                <li><a href="/about">About Me</a></li>
+                                <li><a href="/theme">Theme</a></li>
+                            </ul>        
+                        </nav>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            
+            
+            </header>
+            <div id="main">
+                <ol id="posts" >
+                    <div class="grid">
+                        {block:Posts}
+                            {block:Text}
+                                <li class="post text">
+                                    {block:Title}
+                                        <h3><a href="{Permalink}">{Title}</a></h3>
+                                    {/block:Title}
+                                    {Body}
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+                
+                                {block:PermalinkPage}
+                                        {block:HasTags}
+                                            <li class="post permpage">
+                                                <ul class="tags">
+                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                </ul>
+                                            </li>
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <li class="post permpage">
+                                                <div id="notes">
+                                                    {PostNotes}
+                                                </div>
+                                            </li>
+                                        {/block:PostNotes}
+                                {/block:PermalinkPage} 
+                            {/block:Text}
+                            {block:Photo}
+                                <li class="post photo">
+                                    <a class="imglink" href="{Permalink}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
+
+                                    {block:Caption}
+                                        <div class="caption">{Caption}</div>
+                                    {/block:Caption}
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+                
+                                {block:PermalinkPage}
+                                        {block:HasTags}
+                                            <li class="post permpage">
+                                                <ul class="tags">
+                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                </ul>
+                                            </li>
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <li class="post permpage">
+                                                <div id="notes">
+                                                    {PostNotes}
+                                                </div>
+                                            </li>
+                                        {/block:PostNotes}
+                                {/block:PermalinkPage} 
+                                
+                            {/block:Photo}
+                            {block:Panorama}
+                                <li class="post panorama">
+                                    {LinkOpenTag}
+                                        <a class="imglink" href="{Permalink}"><img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" class="panorama-photo"/></a>
+                                    {LinkCloseTag}
+                                    {block:Caption}
+                                        <div class="caption">{Caption}</div>
+                                    {/block:Caption}
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+                
+                                {block:PermalinkPage}
+                                        {block:HasTags}
+                                            <li class="post permpage">
+                                                <ul class="tags">
+                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                </ul>
+                                            </li>
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <li class="post permpage">
+                                                <div id="notes">
+                                                    {PostNotes}
+                                                </div>
+                                            </li>
+                                        {/block:PostNotes}
+                                {/block:PermalinkPage} 
+                            {/block:Panorama}
+                            {block:Photoset}
+                                <li class="post photoset">
+                                    <a class="imglink" href="{Permalink}"><div class="photoset-photos">{Photoset-500}</div></a>
+                                    {block:Caption}
+                                        <div class="caption">{Caption}</div>
+                                    {/block:Caption}
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+                
+                                {block:PermalinkPage}
+                                    <li class="post permpage">
+                                        {block:HasTags}
+                                            <ul class="tags">
+                                                {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                            </ul>
+                                        
+                                            {block:PostNotes}
+                                                <hr class="seperator">
+                                            {/block:PostNotes}
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <div id="notes">
+                                                {PostNotes}
+                                            </div>
+                                        {/block:PostNotes}
+                                    </li>
+                                {/block:PermalinkPage} 
+                            {/block:Photoset}
+                            {block:Quote}
+                                <li class="post quote">
+                                    "{Quote}"
+
+                                    {block:Source}
+                                        <div class="source">{Source}</div>
+                                    {/block:Source}
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+                
+                                {block:PermalinkPage}
+                                        {block:HasTags}
+                                            <li class="post permpage">
+                                                <ul class="tags">
+                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                </ul>
+                                            </li>
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <li class="post permpage">
+                                                <div id="notes">
+                                                    {PostNotes}
+                                                </div>
+                                            </li>
+                                        {/block:PostNotes}
+                                {/block:PermalinkPage}
+                            {/block:Quote}
+                            {block:Link}
+                                <li class="post link">
+                                    <a href="{URL}" class="actuallink" {Target}>{Name}</a>
+
+                                    {block:Description}
+                                        <div class="description">{Description}</div>
+                                    {/block:Description}
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                {block:PermalinkPage}
+                                        {block:HasTags}
+                                            <li class="post permpage">
+                                                <ul class="tags">
+                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                </ul>
+                                            </li>
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <li class="post permpage">
+                                                <div id="notes">
+                                                    {PostNotes}
+                                                </div>
+                                            </li>
+                                        {/block:PostNotes}
+                                {/block:PermalinkPage}
+                            {/block:Link}
+                            {block:Chat}
+                                <li class="post chat">
+                                    {block:Title}
+                                        <h3><a href="{Permalink}">{Title}</a></h3>
+                                    {/block:Title}
+
+                                    <ul class="chat">
+                                        {block:Lines}
+                                            <li class="{Alt} user_{UserNumber}">
+                                                {block:Label}
+                                                    <span class="label">{Label}</span>
+                                                {/block:Label}{Line}
+                                            </li>
+                                        {/block:Lines}
+                                    </ul>
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+                
+                                {block:PermalinkPage}
+                                        {block:HasTags}
+                                            <li class="post permpage">
+                                                <ul class="tags">
+                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                </ul>
+                                            </li>
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <li class="post permpage">
+                                                <div id="notes">
+                                                    {PostNotes}
+                                                </div>
+                                            </li>
+                                        {/block:PostNotes}
+                                {/block:PermalinkPage} 
+                            {/block:Chat}
+                            {block:Video}
+                                <li class="post video">
+                                    {Video-500}
+                                    {block:Caption}
+                                        <div class="caption">{Caption}</div>
+                                    {/block:Caption}
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+                
+                                {block:PermalinkPage}
+                                        {block:HasTags}
+                                            <li class="post permpage">
+                                                <ul class="tags">
+                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                </ul>
+                                            </li>
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <li class="post permpage">
+                                                <div id="notes">
+                                                    {PostNotes}
+                                                </div>
+                                            </li>
+                                        {/block:PostNotes}
+                                {/block:PermalinkPage}
+                            {/block:Video}
+                            {block:Audio}
+                                <li class="post audio">
+                                    {AudioEmbed}{block:Caption}
+                                        <div class="caption">{Caption}</div>
+                                    {/block:Caption}
+                                    
+                                    <hr id="notesHR">
+                                    
+                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+                                    
+                                    <div class="buttons">
+                                        <div class=" permalinkButton fab">
+                                            <a href="{Permalink}"><img src="https://dl.dropboxusercontent.com/u/97284895/mtrl/link_icon.png"></a>
+                                        </div>
+                                        <div class="reblogButton fab">
+                                            {ReblogButton color="white"}
+                                        </div>
+                                        <div class="favButton fab">
+                                            {LikeButton color="white"}    
+                                        </div>
+                                    </div>
+                                </li>
+
+                                {block:PermalinkPage}
+                                        {block:HasTags}
+                                            <li class="post permpage">
+                                                <ul class="tags">
+                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                </ul>
+                                            </li>
+                                        {/block:HasTags}
+
+                                        {block:PostNotes}
+                                            <li class="post permpage">
+                                                <div id="notes">
+                                                    {PostNotes}
+                                                </div>
+                                            </li>
+                                        {/block:PostNotes}
+                                {/block:PermalinkPage}
+                            {/block:Audio}
+                        {/block:Posts}
+                    </div>
+                </ol>
+            </div>
+        </div>
+    
+    
+        <div id="footer">
+            {block:Pagination}
+                <nav id="pagination">
+                    <ul>
+                        {block:PreviousPage}
+                            <li><a class="footer-button" href="{PreviousPage}">Previous Page</a></li>
+                        {/block:PreviousPage}
+
+                        {block:JumpPagination length="5"}
+                            {block:CurrentPage}
+                                <li><span class="footer-button current-page">{PageNumber}</span></li>
+                            {/block:CurrentPage}
+
+                            {block:JumpPage}
+                                <li><a class="footer-button" class="jump_page" href="{URL}">{PageNumber}</a></li>
+                            {/block:JumpPage}
+                        {/block:JumpPagination}
+
+                        {block:NextPage}
+                            <li><a class="footer-button" href="{NextPage}">Next Page</a></li>
+                        {/block:NextPage}
+                    </ul>
+                </nav>
+
+                <hr>
+            {/block:Pagination}
+
+            <p id="descr"><i>{Description}</i></p>
+        </div>
+
+    
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+        <script src="http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js"></script>
+        <script>
+            (function () {
+                var $grid = $('.grid').masonry({
+                  itemSelector: '.post',
+                  columnWidth: 550
+                });
+                $grid.imagesLoaded().progress( function() {
+                  $grid.masonry('layout');
+                });
+            })();
+        </script>
+
+    </body>
+</html>
