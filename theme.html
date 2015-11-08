@@ -14,14 +14,16 @@
                 
         <meta name="color:Header" content="#ffa200" />
         <meta name="color:HeaderShadow" content="#ff3600" />
-        
+        <meta name="color:Body" content="#e1e1e1" />
+        <meta name="color:Footer" content="#363636" />
+        <meta name="color:FooterShadow" content="rgba(0,0,0,0.2)" />
         
         
         <style>
             
             body {
                 font-family: 'Open Sans', sans-serif;
-                background-color: #e1e1e1;
+                background-color: {color:Body};
                 margin: 0;
                 min-width: 650px;
                 box-shadow: inset 0px 110px 0px 0px {color:HeaderShadow};
@@ -88,6 +90,7 @@
             #logo {
                 margin: 0 auto;            
                 width: 400px;
+                transition: opacity 500ms ease;
             }
             #logo:hover{
                 opacity: 0.85;
@@ -128,6 +131,7 @@
             #nav ul li a {
                 text-decoration: none;
                 color: #464646;
+                transition: opacity 500ms ease;
             }
             #nav ul li a:hover {
                 opacity: 0.6;    
@@ -173,8 +177,11 @@
             .flickr-embed-frame {
                 max-width: 500px !important;
             }
+            .photoset-photos, .panorama-photo {
+                transition: opacity 500ms ease;
+            }
             .photoset-photos:hover, .panorama-photo:hover {
-                opacity: 0.7;
+                opacity: 0.85;
             }
             
             .caption {
@@ -242,19 +249,25 @@
                 padding: 0 8px 0 0;
             }
             
-            .post a:hover{
-                opacity: 0.7;
+            .post a {
+                transition-property: opacity, background-color;
+                transition-timing-function: ease, ease;
+                transition-duration: 500ms, 500ms;
             }
-            .post img:hover {
-                opacity: 0.7 !important;
+            .post a:hover{
+                opacity: 0.85;
+                color: #6c6c6c; /*text links brighter than imges*/
+            }
+            .post img {
+                transition: opacity 500ms ease;
             }
             .caption {
                 margin-top: 8px;
             }
             
             #footer {
-                background-color: #363636;
-                border-top: 5px solid rgba(0,0,0,0.2);
+                background-color: {color:Footer};
+                border-top: 5px solid {color:FooterShadow};
                 color: #8e8e8e;
                 text-align: center;
                 padding: 10px 0 15px 0;
@@ -282,15 +295,17 @@
                 width: 170px;
                 height: 30px;
                 margin: auto;
+                transition: background-color 500ms ease !important;
             }
             .footer-button:hover {
-                background-color: white;
+                background-color: #ffffff;
             }
             #footer ul a {
                 color: white;
                 text-decoration: none;
                 font-weight: 500;
                 line-height: 30px;
+                transition: color 500ms ease;
             }
             #footer ul a:hover {
                 color: {color:HeaderShadow};
@@ -885,5 +900,15 @@
             })();
         </script>
 
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-59817372-2', 'auto');
+            ga('send', 'pageview');
+        </script>
+    
     </body>
 </html>
