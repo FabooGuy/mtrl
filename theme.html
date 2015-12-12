@@ -32,6 +32,20 @@
             }
             
             
+            html, body {
+                height: 100%;
+            }
+            body {
+              display: table;
+              width: 100%;
+            }
+            .page-row {
+              display: table-row;
+              height: 1px;
+            }
+            .page-row-expanded { height: 100%; }
+            
+            
             ::-moz-selection {
                 color: #ffffff;
                 background-color: {color:Header};
@@ -51,7 +65,6 @@
                 position: fixed;
                 top: 0px;
                 width: 100%;
-                display: none;
             }
             #colorbar {
                 background-color: {color:Header};
@@ -406,482 +419,484 @@
     </head>
     
     <body>
-        
-        <div id="colorbar"></div>
-        <div id="disclaimer">CURRENTLY REDESIGNING THEME</div>
-        
-        <div id="center">
-            
-            <header>
-                <div id="logolinks">
+        <div class="page-row page-row-expanded">
+            <div id="colorbar"></div>
+            <div id="disclaimer">CURRENTLY REDESIGNING THEME</div>
 
-                    <div id="logo">                     
-                        <a id="logo" href="/home"><img src="http://i.imgur.com/rKVuxRd.png" alt="big &quot;artoms&quot; logo"></a>
+            <div id="center">
+
+                <header>
+                    <div id="logolinks">
+
+                        <div id="logo">                     
+                            <a id="logo" href="/home"><img src="http://i.imgur.com/rKVuxRd.png" alt="big &quot;artoms&quot; logo"></a>
+                        </div>
+
+                        <hr></hr>
+
+                        <div id="links"> 
+
+                            <nav id="nav">
+                                <ul>
+                                    <li><a href="/home">Home</a></li>
+                                    <li><a href="/art">My Art</a></li>
+                                    <li><a href="/textures">Textures</a></li>
+                                    <li><a href="/ama">AMA</a></li>
+                                    <li><a href="/da">DeviantART</a></li>
+                                    <li><a href="/about">About Me</a></li>
+                                    <li><a href="/theme">Theme</a></li>
+                                </ul>        
+                            </nav>
+
+
+                        </div>
+
                     </div>
 
-                    <hr></hr>
-
-                    <div id="links"> 
-
-                        <nav id="nav">
-                            <ul>
-                                <li><a href="/home">Home</a></li>
-                                <li><a href="/art">My Art</a></li>
-                                <li><a href="/textures">Textures</a></li>
-                                <li><a href="/ama">AMA</a></li>
-                                <li><a href="/da">DeviantART</a></li>
-                                <li><a href="/about">About Me</a></li>
-                                <li><a href="/theme">Theme</a></li>
-                            </ul>        
-                        </nav>
-
-
-                    </div>
-
-                </div>
 
 
 
 
 
-            
-            
-            </header>
-            <div id="main">
-                <ol id="posts" >
-                    <div class="grid">
-                        {block:Posts}
-                            {block:Text}
-                                <li class="post text">
-                                    {block:Title}
-                                        <h3><a href="{Permalink}">{Title}</a></h3>
-                                    {/block:Title}
-                                    {Body}
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
-                                        </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
-                                        </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
-                                        </div>
-                                    </div>
-                                </li>
-                
-                                {block:PermalinkPage}
-                                        {block:HasTags}
-                                            <li class="post permpage">
-                                                <ul class="tags">
-                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-                                                </ul>
-                                            </li>
-                                        {/block:HasTags}
 
-                                        {block:PostNotes}
-                                            <li class="post permpage">
-                                                <div id="notes">
-                                                    {PostNotes}
-                                                </div>
-                                            </li>
-                                        {/block:PostNotes}
-                                {/block:PermalinkPage} 
-                            {/block:Text}
-                            {block:Photo}
-                                <li class="post photo">
-                                    <a class="imglink" href="{Permalink}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
+                </header>
+                <div id="main">
+                    <ol id="posts" >
+                        <div class="grid">
+                            {block:Posts}
+                                {block:Text}
+                                    <li class="post text">
+                                        {block:Title}
+                                            <h3><a href="{Permalink}">{Title}</a></h3>
+                                        {/block:Title}
+                                        {Body}
 
-                                    {block:Caption}
-                                        <div class="caption">{Caption}</div>
-                                    {/block:Caption}
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
-                                        </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
-                                        </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
-                                        </div>
-                                    </div>
-                                </li>
-                
-                                {block:PermalinkPage}
-                                        {block:HasTags}
-                                            <li class="post permpage">
-                                                <ul class="tags">
-                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-                                                </ul>
-                                            </li>
-                                        {/block:HasTags}
+                                        <hr id="notesHR">
 
-                                        {block:PostNotes}
-                                            <li class="post permpage">
-                                                <div id="notes">
-                                                    {PostNotes}
-                                                </div>
-                                            </li>
-                                        {/block:PostNotes}
-                                {/block:PermalinkPage} 
-                                
-                            {/block:Photo}
-                            {block:Panorama}
-                                <li class="post panorama">
-                                    {LinkOpenTag}
-                                        <a class="imglink" href="{Permalink}"><img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" class="panorama-photo"/></a>
-                                    {LinkCloseTag}
-                                    {block:Caption}
-                                        <div class="caption">{Caption}</div>
-                                    {/block:Caption}
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
-                                        </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
-                                        </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
-                                        </div>
-                                    </div>
-                                </li>
-                
-                                {block:PermalinkPage}
-                                        {block:HasTags}
-                                            <li class="post permpage">
-                                                <ul class="tags">
-                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-                                                </ul>
-                                            </li>
-                                        {/block:HasTags}
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
 
-                                        {block:PostNotes}
-                                            <li class="post permpage">
-                                                <div id="notes">
-                                                    {PostNotes}
-                                                </div>
-                                            </li>
-                                        {/block:PostNotes}
-                                {/block:PermalinkPage} 
-                            {/block:Panorama}
-                            {block:Photoset}
-                                <li class="post photoset">
-                                    <a class="imglink" href="{Permalink}"><div class="photoset-photos">{Photoset-500}</div></a>
-                                    {block:Caption}
-                                        <div class="caption">{Caption}</div>
-                                    {/block:Caption}
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
-                                        </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
-                                        </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
-                                        </div>
-                                    </div>
-                                </li>
-                
-                                {block:PermalinkPage}
-                                    <li class="post permpage">
-                                        {block:HasTags}
-                                            <ul class="tags">
-                                                {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-                                            </ul>
-                                        
-                                            {block:PostNotes}
-                                                <hr class="seperator">
-                                            {/block:PostNotes}
-                                        {/block:HasTags}
-
-                                        {block:PostNotes}
-                                            <div id="notes">
-                                                {PostNotes}
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
                                             </div>
-                                        {/block:PostNotes}
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
+                                        </div>
                                     </li>
-                                {/block:PermalinkPage} 
-                            {/block:Photoset}
-                            {block:Quote}
-                                <li class="post quote">
-                                    "{Quote}"
 
-                                    {block:Source}
-                                        <div class="source">{Source}</div>
-                                    {/block:Source}
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                    {block:PermalinkPage}
+                                            {block:HasTags}
+                                                <li class="post permpage">
+                                                    <ul class="tags">
+                                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                    </ul>
+                                                </li>
+                                            {/block:HasTags}
+
+                                            {block:PostNotes}
+                                                <li class="post permpage">
+                                                    <div id="notes">
+                                                        {PostNotes}
+                                                    </div>
+                                                </li>
+                                            {/block:PostNotes}
+                                    {/block:PermalinkPage} 
+                                {/block:Text}
+                                {block:Photo}
+                                    <li class="post photo">
+                                        <a class="imglink" href="{Permalink}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
+
+                                        {block:Caption}
+                                            <div class="caption">{Caption}</div>
+                                        {/block:Caption}
+
+                                        <hr id="notesHR">
+
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                            </div>
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
                                         </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
+                                    </li>
+
+                                    {block:PermalinkPage}
+                                            {block:HasTags}
+                                                <li class="post permpage">
+                                                    <ul class="tags">
+                                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                    </ul>
+                                                </li>
+                                            {/block:HasTags}
+
+                                            {block:PostNotes}
+                                                <li class="post permpage">
+                                                    <div id="notes">
+                                                        {PostNotes}
+                                                    </div>
+                                                </li>
+                                            {/block:PostNotes}
+                                    {/block:PermalinkPage} 
+
+                                {/block:Photo}
+                                {block:Panorama}
+                                    <li class="post panorama">
+                                        {LinkOpenTag}
+                                            <a class="imglink" href="{Permalink}"><img src="{PhotoURL-Panorama}" alt="{PhotoAlt}" class="panorama-photo"/></a>
+                                        {LinkCloseTag}
+                                        {block:Caption}
+                                            <div class="caption">{Caption}</div>
+                                        {/block:Caption}
+
+                                        <hr id="notesHR">
+
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                            </div>
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
                                         </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
+                                    </li>
+
+                                    {block:PermalinkPage}
+                                            {block:HasTags}
+                                                <li class="post permpage">
+                                                    <ul class="tags">
+                                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                    </ul>
+                                                </li>
+                                            {/block:HasTags}
+
+                                            {block:PostNotes}
+                                                <li class="post permpage">
+                                                    <div id="notes">
+                                                        {PostNotes}
+                                                    </div>
+                                                </li>
+                                            {/block:PostNotes}
+                                    {/block:PermalinkPage} 
+                                {/block:Panorama}
+                                {block:Photoset}
+                                    <li class="post photoset">
+                                        <a class="imglink" href="{Permalink}"><div class="photoset-photos">{Photoset-500}</div></a>
+                                        {block:Caption}
+                                            <div class="caption">{Caption}</div>
+                                        {/block:Caption}
+
+                                        <hr id="notesHR">
+
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                            </div>
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                
-                                {block:PermalinkPage}
-                                        {block:HasTags}
-                                            <li class="post permpage">
+                                    </li>
+
+                                    {block:PermalinkPage}
+                                        <li class="post permpage">
+                                            {block:HasTags}
                                                 <ul class="tags">
                                                     {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
                                                 </ul>
-                                            </li>
-                                        {/block:HasTags}
 
-                                        {block:PostNotes}
-                                            <li class="post permpage">
+                                                {block:PostNotes}
+                                                    <hr class="seperator">
+                                                {/block:PostNotes}
+                                            {/block:HasTags}
+
+                                            {block:PostNotes}
                                                 <div id="notes">
                                                     {PostNotes}
                                                 </div>
-                                            </li>
-                                        {/block:PostNotes}
-                                {/block:PermalinkPage}
-                            {/block:Quote}
-                            {block:Link}
-                                <li class="post link">
-                                    <a href="{URL}" class="actuallink" {Target}>{Name}</a>
+                                            {/block:PostNotes}
+                                        </li>
+                                    {/block:PermalinkPage} 
+                                {/block:Photoset}
+                                {block:Quote}
+                                    <li class="post quote">
+                                        "{Quote}"
 
-                                    {block:Description}
-                                        <div class="description">{Description}</div>
-                                    {/block:Description}
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
-                                        </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
-                                        </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
-                                        </div>
-                                    </div>
-                                </li>
-                                
-                                {block:PermalinkPage}
-                                        {block:HasTags}
-                                            <li class="post permpage">
-                                                <ul class="tags">
-                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-                                                </ul>
-                                            </li>
-                                        {/block:HasTags}
+                                        {block:Source}
+                                            <div class="source">{Source}</div>
+                                        {/block:Source}
 
-                                        {block:PostNotes}
-                                            <li class="post permpage">
-                                                <div id="notes">
-                                                    {PostNotes}
-                                                </div>
-                                            </li>
-                                        {/block:PostNotes}
-                                {/block:PermalinkPage}
-                            {/block:Link}
-                            {block:Chat}
-                                <li class="post chat">
-                                    {block:Title}
-                                        <h3><a href="{Permalink}">{Title}</a></h3>
-                                    {/block:Title}
+                                        <hr id="notesHR">
 
-                                    <ul class="chat">
-                                        {block:Lines}
-                                            <li class="{Alt} user_{UserNumber}">
-                                                {block:Label}
-                                                    <span class="label">{Label}</span>
-                                                {/block:Label}{Line}
-                                            </li>
-                                        {/block:Lines}
-                                    </ul>
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
-                                        </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
-                                        </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
-                                        </div>
-                                    </div>
-                                </li>
-                
-                                {block:PermalinkPage}
-                                        {block:HasTags}
-                                            <li class="post permpage">
-                                                <ul class="tags">
-                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-                                                </ul>
-                                            </li>
-                                        {/block:HasTags}
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
 
-                                        {block:PostNotes}
-                                            <li class="post permpage">
-                                                <div id="notes">
-                                                    {PostNotes}
-                                                </div>
-                                            </li>
-                                        {/block:PostNotes}
-                                {/block:PermalinkPage} 
-                            {/block:Chat}
-                            {block:Video}
-                                <li class="post video">
-                                    {Video-500}
-                                    {block:Caption}
-                                        <div class="caption">{Caption}</div>
-                                    {/block:Caption}
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                            </div>
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
                                         </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
-                                        </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
-                                        </div>
-                                    </div>
-                                </li>
-                
-                                {block:PermalinkPage}
-                                        {block:HasTags}
-                                            <li class="post permpage">
-                                                <ul class="tags">
-                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-                                                </ul>
-                                            </li>
-                                        {/block:HasTags}
+                                    </li>
 
-                                        {block:PostNotes}
-                                            <li class="post permpage">
-                                                <div id="notes">
-                                                    {PostNotes}
-                                                </div>
-                                            </li>
-                                        {/block:PostNotes}
-                                {/block:PermalinkPage}
-                            {/block:Video}
-                            {block:Audio}
-                                <li class="post audio">
-                                    {AudioEmbed}{block:Caption}
-                                        <div class="caption">{Caption}</div>
-                                    {/block:Caption}
-                                    
-                                    <hr id="notesHR">
-                                    
-                                    <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
-                                    
-                                    <div class="buttons">
-                                        <div class=" permalinkButton fab">
-                                            <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
-                                        </div>
-                                        <div class="reblogButton fab">
-                                            {ReblogButton color="white"}
-                                        </div>
-                                        <div class="favButton fab">
-                                            {LikeButton color="white"}    
-                                        </div>
-                                    </div>
-                                </li>
+                                    {block:PermalinkPage}
+                                            {block:HasTags}
+                                                <li class="post permpage">
+                                                    <ul class="tags">
+                                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                    </ul>
+                                                </li>
+                                            {/block:HasTags}
 
-                                {block:PermalinkPage}
-                                        {block:HasTags}
-                                            <li class="post permpage">
-                                                <ul class="tags">
-                                                    {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
-                                                </ul>
-                                            </li>
-                                        {/block:HasTags}
+                                            {block:PostNotes}
+                                                <li class="post permpage">
+                                                    <div id="notes">
+                                                        {PostNotes}
+                                                    </div>
+                                                </li>
+                                            {/block:PostNotes}
+                                    {/block:PermalinkPage}
+                                {/block:Quote}
+                                {block:Link}
+                                    <li class="post link">
+                                        <a href="{URL}" class="actuallink" {Target}>{Name}</a>
 
-                                        {block:PostNotes}
-                                            <li class="post permpage">
-                                                <div id="notes">
-                                                    {PostNotes}
-                                                </div>
-                                            </li>
-                                        {/block:PostNotes}
-                                {/block:PermalinkPage}
-                            {/block:Audio}
-                        {/block:Posts}
-                    </div>
-                </ol>
+                                        {block:Description}
+                                            <div class="description">{Description}</div>
+                                        {/block:Description}
+
+                                        <hr id="notesHR">
+
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                            </div>
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    {block:PermalinkPage}
+                                            {block:HasTags}
+                                                <li class="post permpage">
+                                                    <ul class="tags">
+                                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                    </ul>
+                                                </li>
+                                            {/block:HasTags}
+
+                                            {block:PostNotes}
+                                                <li class="post permpage">
+                                                    <div id="notes">
+                                                        {PostNotes}
+                                                    </div>
+                                                </li>
+                                            {/block:PostNotes}
+                                    {/block:PermalinkPage}
+                                {/block:Link}
+                                {block:Chat}
+                                    <li class="post chat">
+                                        {block:Title}
+                                            <h3><a href="{Permalink}">{Title}</a></h3>
+                                        {/block:Title}
+
+                                        <ul class="chat">
+                                            {block:Lines}
+                                                <li class="{Alt} user_{UserNumber}">
+                                                    {block:Label}
+                                                        <span class="label">{Label}</span>
+                                                    {/block:Label}{Line}
+                                                </li>
+                                            {/block:Lines}
+                                        </ul>
+
+                                        <hr id="notesHR">
+
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                            </div>
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    {block:PermalinkPage}
+                                            {block:HasTags}
+                                                <li class="post permpage">
+                                                    <ul class="tags">
+                                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                    </ul>
+                                                </li>
+                                            {/block:HasTags}
+
+                                            {block:PostNotes}
+                                                <li class="post permpage">
+                                                    <div id="notes">
+                                                        {PostNotes}
+                                                    </div>
+                                                </li>
+                                            {/block:PostNotes}
+                                    {/block:PermalinkPage} 
+                                {/block:Chat}
+                                {block:Video}
+                                    <li class="post video">
+                                        {Video-500}
+                                        {block:Caption}
+                                            <div class="caption">{Caption}</div>
+                                        {/block:Caption}
+
+                                        <hr id="notesHR">
+
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                            </div>
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    {block:PermalinkPage}
+                                            {block:HasTags}
+                                                <li class="post permpage">
+                                                    <ul class="tags">
+                                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                    </ul>
+                                                </li>
+                                            {/block:HasTags}
+
+                                            {block:PostNotes}
+                                                <li class="post permpage">
+                                                    <div id="notes">
+                                                        {PostNotes}
+                                                    </div>
+                                                </li>
+                                            {/block:PostNotes}
+                                    {/block:PermalinkPage}
+                                {/block:Video}
+                                {block:Audio}
+                                    <li class="post audio">
+                                        {AudioEmbed}{block:Caption}
+                                            <div class="caption">{Caption}</div>
+                                        {/block:Caption}
+
+                                        <hr id="notesHR">
+
+                                        <div class="notes-time">{block:NoteCount} {NoteCountWithLabel} - {/block:NoteCount}{TimeAgo}</div> 
+
+                                        <div class="buttons">
+                                            <div class=" permalinkButton fab">
+                                                <a href="{Permalink}"><img src="http://i.imgur.com/1lc95GQ.png"></a>
+                                            </div>
+                                            <div class="reblogButton fab">
+                                                {ReblogButton color="white"}
+                                            </div>
+                                            <div class="favButton fab">
+                                                {LikeButton color="white"}    
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    {block:PermalinkPage}
+                                            {block:HasTags}
+                                                <li class="post permpage">
+                                                    <ul class="tags">
+                                                        {block:Tags}<li><a href="{TagURL}">{Tag}</a> </li>{/block:Tags}
+                                                    </ul>
+                                                </li>
+                                            {/block:HasTags}
+
+                                            {block:PostNotes}
+                                                <li class="post permpage">
+                                                    <div id="notes">
+                                                        {PostNotes}
+                                                    </div>
+                                                </li>
+                                            {/block:PostNotes}
+                                    {/block:PermalinkPage}
+                                {/block:Audio}
+                            {/block:Posts}
+                        </div>
+                    </ol>
+                </div>
             </div>
         </div>
     
     
-        <div id="footer">
-            {block:Pagination}
-                <nav id="pagination">
-                    <ul>
-                        {block:PreviousPage}
-                            <li><a class="footer-button" href="{PreviousPage}">Previous Page</a></li>
-                        {/block:PreviousPage}
+        <div class="page-row">
+            <div id="footer">
+                {block:Pagination}
+                    <nav id="pagination">
+                        <ul>
+                            {block:PreviousPage}
+                                <li><a class="footer-button" href="{PreviousPage}">Previous Page</a></li>
+                            {/block:PreviousPage}
 
-                        {block:JumpPagination length="5"}
-                            {block:CurrentPage}
-                                <li><span class="footer-button current-page">{PageNumber}</span></li>
-                            {/block:CurrentPage}
+                            {block:JumpPagination length="5"}
+                                {block:CurrentPage}
+                                    <li><span class="footer-button current-page">{PageNumber}</span></li>
+                                {/block:CurrentPage}
 
-                            {block:JumpPage}
-                                <li><a class="footer-button" class="jump_page" href="{URL}">{PageNumber}</a></li>
-                            {/block:JumpPage}
-                        {/block:JumpPagination}
+                                {block:JumpPage}
+                                    <li><a class="footer-button" class="jump_page" href="{URL}">{PageNumber}</a></li>
+                                {/block:JumpPage}
+                            {/block:JumpPagination}
 
-                        {block:NextPage}
-                            <li><a class="footer-button" href="{NextPage}">Next Page</a></li>
-                        {/block:NextPage}
-                    </ul>
-                </nav>
+                            {block:NextPage}
+                                <li><a class="footer-button" href="{NextPage}">Next Page</a></li>
+                            {/block:NextPage}
+                        </ul>
+                    </nav>
 
-                <hr>
-            {/block:Pagination}
+                    <hr>
+                {/block:Pagination}
 
-            <p id="descr"><i>{Description}</i></p>
+                <p id="descr"><i>{Description}</i></p>
+            </div>
         </div>
-
     
     
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
